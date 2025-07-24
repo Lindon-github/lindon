@@ -180,10 +180,10 @@ export default defineUserConfig({
   /**
    *  By alias, the page is rebuilt
    */
-  alias: {
-    "@theme/Nav/VPNavBarTitle.vue": path.resolve(
-      __dirname,
-      "./theme/components/NavBarTitle.vue"
-    ),
-  },
+  // alias: {
+  //   "@theme/Nav/VPNavBarTitle.vue": path.resolve(
+  //     __dirname,
+  //     "./theme/components/NavBarTitle.vue"
+  //   ),
+  // },
 })
