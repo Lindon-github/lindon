@@ -1,0 +1,3 @@
+Sitemap: https://plus-wave.github.io/lindon/sitemap.xml
+User-agent:*
+Disallow:
