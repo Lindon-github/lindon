@@ -101,16 +101,31 @@ const zhNoteConfig4 = defineNoteConfig({
 const zhNoteConfig5 = defineNoteConfig({
   dir: 'interview',
   link: '/before/',
-  sidebar: [
-    '',
-    {
-      dir: '1.前端面试题',
-      text: '1.前端面试题',
-      icon: 'skill-icons:javascript',
-      collapsed: true,
-      items: 'auto',
-    },
-  ]
+  sidebar: 'auto',
+  // sidebar: [
+  //   '',
+  //   {
+  //     dir: '1.前端基础',
+  //     text: '前端基础',
+  //     icon: 'skill-icons:javascript',
+  //     collapsed: true,
+  //     items: 'auto',
+  //   },
+  //   {
+  //     dir: '2.Vue',
+  //     text: 'Vue',
+  //     icon: 'material-icon-theme:vue',
+  //     collapsed: true,
+  //     items: 'auto',
+  //   },
+  //   {
+  //     dir: '3.前端面试',
+  //     text: '前端面试',
+  //     icon: 'streamline-kameleon-color:article-file-2',
+  //     collapsed: true,
+  //     items: 'auto',
+  //   },
+  // ]
 })
 
 export const zhNotes = defineNotesConfig({
