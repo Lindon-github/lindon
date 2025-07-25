@@ -1,6 +1,5 @@
 ---
 title: 前端模块
-icon: skill-icons:html
 createTime: 2025/04/20 11:42:05
 permalink: /before/
 draft: false

@@ -9,6 +9,7 @@ export const zhNavbar = defineNavbarConfig([
     text: '🗂️我的笔记',
     items: [
       { text: 'interview', link: '/notes/interview/', icon: 'skill-icons:javascript' },
+      { text: 'back', link: '/backend/', icon: 'skill-icons/java-light' },
     ]
   },
   { text: '站点导航', link: '/links/', icon: 'flat-color-icons:redo' },

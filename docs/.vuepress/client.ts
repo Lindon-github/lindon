@@ -4,6 +4,7 @@ import CustomComponent from './theme/components/Custom.vue'
 import Layout from './theme/layouts/Layout.vue'
 import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
 
+import './styles/index.css'
 import './theme/styles/custom.css'
 
 export default defineClientConfig({

@@ -1,0 +1,128 @@
+name: Branch Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete Branch
+        uses: jessfraz/branch-cleanup-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          only_merged: true
+
+#  你好呀！😊 看起来你在处理一个 GitHub Actions 的工作流配置，具体是想了解如何使用这个 `Branch Cleanup` 工作流来自动删除已经关闭的 Pull Request 对应的分支，对吧？
+#
+#  --
+#
+#  🧩 先简单聊聊你的需求
+#
+#  你贴出的这段 YAML 配置，是一个 GitHub Actions 的工作流定义，名字叫 `Branch Cleanup`。它会在 Pull Request 被关闭时触发（不管是合并还是直接关闭），然后尝试删除这个 PR 关联的源分支（比如你从 `feature-xxx` 提的 PR，关闭后会尝试删掉 `feature-xxx` 这个分支）。
+#
+#  这个功能在团队协作中特别有用，可以避免仓库里堆积一堆已经没用的分支，保持仓库清爽！👍
+#
+#  --
+#
+#  🛠 这个配置本身是怎么工作的？
+#
+#  你贴的代码大致如下：
+#
+#  ```yaml
+#name: Branch Cleanup
+#
+#on:
+#  pull_request:
+#    types: [closed]
+#
+#jobs:
+#  cleanup:
+#    runs-on: ubuntu-latest
+#    steps:
+#      name: Delete Branch
+#        uses: jessfraz/branch-cleanup-action@master
+#        with:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#  ```
+#
+#  各部分含义：
+#
+#name: Branch Cleanup
+#  就是这个工作流的名字，随便取，便于你在 GitHub 的 Actions 页面识别。
+#
+#on: pull_request: types: [closed]
+#      表示触发条件：当有任何一个 Pull Request 被关闭时（包括合并后关闭或直接关闭），这个工作流就会运行。
+#
+#  jobs -> cleanup
+#  定义了一个叫 `cleanup` 的任务，它会在最新的 Ubuntu 环境里执行。
+#
+#  steps -> Delete Branch
+#  这一步使用了别人写好的一个 Action：jessfraz/branch-cleanup-action，它的作用就是删除和 PR 关联的分支。
+#
+#with: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        这是 GitHub 自动提供的一个 Token，有权限操作当前仓库（比如删除分支）。你不用自己创建，直接用这个就行。
+#
+#  --
+#
+#  ✅ 如何使用这个配置？
+#
+#  步骤 1：将这段配置保存到你的仓库中
+#
+#  你需要将这段 YAML 代码保存到你的 GitHub 仓库里的一个特定文件中，路径为：
+#
+#  ```
+#  .github/workflows/branch-cleanup.yml
+#  ```
+#
+#  如果没有 `.github/workflows/` 这个目录，就手动创建一下。
+#
+#  步骤 2：提交并推送这个文件到你的仓库
+#
+#  比如你新建或编辑了 `.github/workflows/branch-cleanup.yml` 文件后，使用 `git add`、`git commit` 和 `git push` 把它推送到你的 GitHub 仓库。
+#
+#  步骤 3：观察效果 🎉
+#
+#  之后，每当有人发起一个 Pull Request，然后关闭它（不管是合并还是直接关闭），GitHub Actions 就会自动运行这个工作流，并尝试删除该 PR 对应的源分支。
+#
+#  > ⚠️ 注意：它只会删除 PR 关联的那个源分支，不会删除主分支（比如 main / master），也不会删除别人正在用的分支，所以很安全！
+#
+#  --
+#
+#  🔒 安全性说明
+#
+#  使用的是 GitHub 官方提供的 `GITHUB_TOKEN`，权限仅限于当前仓库，不会影响其它仓库。
+#  使用的 Action 是 `jessfraz/branch-cleanup-action`，这是一个比较常用的开源 Action，但如果你特别注重安全，也可以查看它的源码，或者选用其它你更信任的类似工具。
+#
+#  --
+#
+#  🧠 补充小知识
+#
+#  如果你想进一步定制，比如：
+#
+#  只清理 已合并（merged） 的 PR 的分支，而不清理直接关闭的分支，这个 Action 也是支持的！你只需要额外传入参数，比如：
+#
+#  ```yaml
+#with:
+#  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#  only_merged: true
+#  ```
+#
+#  这样就只删除那些 已经合并 的 PR 分支，未合并但关闭的 PR 分支会保留。🔧
+#
+#  不过你当前用的版本（`@master`）默认可能已经包含类似逻辑，也可以查看 Action 的文档 获取最新参数说明。
+#
+#  --
+#
+#  ✅ 总结一下，你要“如何使用”这个配置，就是：
+#
+#  1. 将这段 YAML 保存为 `.github/workflows/branch-cleanup.yml` 文件，提交并推送到你的 GitHub 仓库。
+#  2. 之后每当有 Pull Request 被关闭，就会自动触发删除对应的分支。
+#  3. 无需手动操作，省心又干净！
+#
+#  --
+#
+#  如果你想让我帮你一起把这个文件创建好、或者改成只删已合并的分支、或者部署到你的具体仓库里，也可以继续告诉我，我随时在这儿帮你梳理 😊
+#
+#  加油，你的仓库管理越来越专业啦！🚀
