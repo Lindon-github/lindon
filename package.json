@@ -28,6 +28,10 @@
   "dependencies": {
     "@iconify/json": "^2.2.359",
     "@vuepress/shiki-twoslash": "2.0.0-rc.112",
+    "artplayer": "^5.2.5",
+    "dashjs": "^5.0.3",
+    "hls.js": "^1.6.10",
+    "mpegts.js": "^1.8.0",
     "swiper": "^11.2.10"
   }
 }
